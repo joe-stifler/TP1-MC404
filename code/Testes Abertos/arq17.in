@@ -1,0 +1,45 @@
+.org 0x0000000000
+    LOAD "contador"
+    SUB "constante"
+    STOR "contador"
+    JUMP "0x0000000002"
+    LOAD "vetor1"
+    STORA "end_var_vet1"
+    LOAD "vetor2"
+    STORA "end_var_vet2"
+    end_var_vet1:
+        LOADmq_mx "0x0000000000"
+    end_var_vet2:
+        MUL "0x0000000000"
+    LOADmq
+    ADD "resposta"
+    STOR "resposta"
+    LOAD "contador"
+    SUB "constante"
+    STOR "contador"
+    LOAD "vetor1"
+    ADD "constante"
+    STOR "vetor1"
+    LOAD "vetor2"
+    ADD "constante"
+    STOR "vetor2"
+    LOAD "contador"
+    JMP+ "0x0000000002"
+    LOAD "resposta"
+    JUMP "0x0000000400"
+
+.org 0x0000000022
+constante:
+    .word 0x0000000001
+
+.org 0x0000000025
+resposta:
+    .word 0x0000000000
+
+.org 0x00000003FD
+vetor1:
+    .align 2
+vetor2:
+    .align 3
+contador:
+    .align 2

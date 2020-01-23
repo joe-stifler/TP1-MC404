@@ -1,0 +1,33 @@
+.org 0x0000000000
+    LOADmq_mx "gravidade"
+    MUL "var_x"
+    LOADmq
+    RSH
+    STOR "resposta"
+laco:
+    LOADmq_mx "gravidade"
+    MUL "var_x"
+    LOADmq
+    DIV "resposta"
+    LOADmq
+    ADD "resposta"
+    RSH
+    STOR "resposta"
+    LOAD "contador"
+    SUB "constante"
+    STOR "contador"
+    JMP+ "laco"
+
+    LOAD "resposta"
+    JUMP "0x0000000400"
+
+.org 0x0000000101
+contador:
+    .word 0x0000000009
+constante:
+    .word 0x0000000001
+gravidade:
+    .word 0x000000000A
+resposta:
+    .align 3
+var_x:
